@@ -45,7 +45,8 @@ RUN apt-get install -y gradle
 RUN echo "Start Setup Gradle is done"
 
 #Install TeamCity BuildAgent
-COPY buildAgent /opt
+COPY buildAgent /opt/buildAgent
+RUN ll /opt
 RUN chmod +x /opt/buildAgent/bin/*.sh
 
 #install Android SDK
