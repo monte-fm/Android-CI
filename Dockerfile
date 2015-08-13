@@ -23,12 +23,15 @@ COPY configs/autostart.sh /root/autostart.sh
 RUN chmod +x /root/autostart.sh
 COPY configs/bash.bashrc /etc/bash.bashrc
 
-#ant install
+#Ant install
 RUN add-apt-repository -y ppa:webupd8team/java 
 RUN apt-get update
-RUN apt-get install -y default-jdk
-#RUN apt-get install -y oracle-java7-installer 
-#RUN apt-get install -y oracle-java8-installer
+#Install Java7
+RUN echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+RUN apt-get install -y oracle-java7-installer 
+#Install Java8
+RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+RUN apt-get install -y oracle-java8-installer
 RUN apt-get install -y ant
 
 #aliases
@@ -41,26 +44,26 @@ RUN apt-get update
 RUN apt-get install -y gradle
 RUN echo "Start Setup Gradle is done"
 
+#Install TeamCity BuildAgent
+COPY buildAgent /opt
+RUN chmod +x /opt/buildAgent/bin/*.sh
+
 #install Android SDK
-RUN cd /home && wget http://dl.google.com/android/android-sdk_r24.3.3-linux.tgz
-RUN cd /home && tar -xvzf /home/android-sdk_r24.3.3-linux.tgz
-RUN mv /home/android-sdk-linux /opt
-RUN rm /home/android-sdk_r24.3.3-linux.tgz
+RUN wget http://dl.google.com/android/android-sdk_r24.3.3-linux.tgz
+RUN tar -xvzf /home/android-sdk_r24.3.3-linux.tgz
+RUN mv android-sdk-linux /opt/android-sdk-linux
+RUN rm android-sdk_r24.3.3-linux.tgz
 RUN export ANDROID_HOME=/opt/android-sdk-linux
 RUN export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 RUN echo "y" | android update sdk -u --all
 
 #install Android NDK
-RUN cd /home && wget http://dl.google.com/android/ndk/android-ndk-r10e-linux-x86_64.bin
-RUN chmod +x /home/android-ndk-r10e-linux-x86_64.bin
-RUN /home/android-ndk-r10e-linux-x86_64.bin
-RUN mv /home/android-ndk-r10e /opt
-RUN rm /home/android-ndk-r10e-linux-x86_64.bin
+RUN wget http://dl.google.com/android/ndk/android-ndk-r10e-linux-x86_64.bin
+RUN chmod +x android-ndk-r10e-linux-x86_64.bin
+RUN ./android-ndk-r10e-linux-x86_64.bin
+RUN mv android-ndk-r10e /opt/android-ndk-r10e
+RUN rm android-ndk-r10e-linux-x86_64.bin
 RUN export ANDROID_NDK=/opt/android-ndk-r10e
-
-#Install TeamCity BuildAgent
-COPY buildAgent /opt
-RUN chmod +x /opt/buildAgent/bin/*.sh 
 
 #open ports
 EXPOSE 80 22
