@@ -24,8 +24,10 @@ RUN chmod +x /root/autostart.sh
 COPY configs/bash.bashrc /etc/bash.bashrc
 
 #ant install
-RUN sudo apt-get install -y oracle-java7-installer oracle-java8-installer
-RUN sudo apt-get install -y ant
+RUN add-apt-repository -y ppa:webupd8team/java 
+RUN apt-get update
+RUN apt-get install -y oracle-java7-installer oracle-java8-installer
+RUN apt-get install -y ant
 
 #aliases
 RUN alias ll='ls -la'
