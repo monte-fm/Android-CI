@@ -43,7 +43,7 @@ RUN echo "Start Setup Gradle is done"
 
 #install Android SDK
 RUN cd /home && wget http://dl.google.com/android/android-sdk_r24.3.3-linux.tgz
-RUN tar -xvzf /home/android-sdk_r24.3.3-linux.tgz
+RUN cd /home && tar -xvzf /home/android-sdk_r24.3.3-linux.tgz
 RUN mv /home/android-sdk-linux /opt
 RUN rm /home/android-sdk_r24.3.3-linux.tgz
 RUN export ANDROID_HOME=/opt/android-sdk-linux
