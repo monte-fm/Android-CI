@@ -1,6 +1,3 @@
-# gitlab-runner
-Docker image for gitlab-runner
-
 #Installed applications
 Nginx
 Curl
