@@ -2,7 +2,6 @@
 Docker image for gitlab-runner
 
 #Installed applications
-PHP
 Nginx
 Curl
 Zip
@@ -12,18 +11,7 @@ MC
 Vim
 Git
 Wget
-MySQL
 SSH
 Ant
-Composer
 Gradle
-NodeJS
-Ruby
-Capifony
-Gitlab-Runner
-
-
-#MySQL credentials
-Login: root
-
-Pass: root
+Android SDK, NDK
