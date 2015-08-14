@@ -66,7 +66,7 @@ RUN export ANDROID_NDK=/opt/android-ndk-r10e
 #Config Android SDK
 RUN export ANDROID_HOME=/opt/android-sdk-linux
 RUN export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
-RUN echo "y" | android update sdk -u --all
+#RUN echo "y" | android update sdk -u --all
 
 
 #open ports
