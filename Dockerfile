@@ -22,7 +22,7 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 
 #configs bash start
 COPY configs/autostart.sh /root/autostart.sh
-COPY configs/start.sh /root/start.sh
+COPY configs/android_config.sh /root/android_config.sh
 RUN chmod +x /root/*.sh
 COPY configs/bash.bashrc /etc/bash.bashrc
 
