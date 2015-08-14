@@ -51,7 +51,7 @@ RUN chmod +x /opt/buildAgent/bin/*.sh
 
 #install Android SDK
 RUN wget http://dl.google.com/android/android-sdk_r24.3.3-linux.tgz
-RUN tar -xvzf /home/android-sdk_r24.3.3-linux.tgz
+RUN tar -xvzf android-sdk_r24.3.3-linux.tgz
 RUN mv android-sdk-linux /opt/android-sdk-linux
 RUN rm android-sdk_r24.3.3-linux.tgz
 RUN export ANDROID_HOME=/opt/android-sdk-linux
