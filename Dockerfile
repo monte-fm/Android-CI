@@ -54,9 +54,6 @@ RUN wget http://dl.google.com/android/android-sdk_r24.3.3-linux.tgz
 RUN tar -xvzf android-sdk_r24.3.3-linux.tgz
 RUN mv android-sdk-linux /opt/android-sdk-linux
 RUN rm android-sdk_r24.3.3-linux.tgz
-RUN export ANDROID_HOME=/opt/android-sdk-linux
-RUN export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
-RUN echo "y" | android update sdk -u --all
 
 #install Android NDK
 RUN wget http://dl.google.com/android/ndk/android-ndk-r10e-linux-x86_64.bin
@@ -65,6 +62,12 @@ RUN ./android-ndk-r10e-linux-x86_64.bin
 RUN mv android-ndk-r10e /opt/android-ndk-r10e
 RUN rm android-ndk-r10e-linux-x86_64.bin
 RUN export ANDROID_NDK=/opt/android-ndk-r10e
+
+#Config Android SDK
+RUN export ANDROID_HOME=/opt/android-sdk-linux
+RUN export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+RUN echo "y" | android update sdk -u --all
+
 
 #open ports
 EXPOSE 80 22
