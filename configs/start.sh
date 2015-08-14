@@ -5,6 +5,4 @@ export ANDROID_NDK=/opt/android-ndk-r10e
 export ANDROID_HOME=/opt/android-sdk-linux
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 /opt/buildAgent/bin/agent.sh start
-echo "y" | android update sdk -u --all
-cp /root/start.sh /root/autostart.sh
 
