@@ -5,6 +5,8 @@ MAINTAINER Olexander Kutsenko <olexander.kutsenko@gmail.com>
 RUN apt-get update -y
 RUN apt-get install -y software-properties-common python-software-properties
 RUN apt-get install -y git git-core vim nano mc nginx screen curl unzip zip
+RUN mkdir /var/www
+RUN chown -R www-data:www-data /var/www
 COPY configs/nginx/default /etc/nginx/sites-available/default
 
 # SSH service
