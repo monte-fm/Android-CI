@@ -65,5 +65,8 @@ RUN ./android-ndk-r10e-linux-x86_64.bin
 RUN mv android-ndk-r10e /opt/android-ndk-r10e
 RUN rm android-ndk-r10e-linux-x86_64.bin
 
+#Add colorful command line
+RUN echo "force_color_prompt=yes" >> .bashrc
+
 #open ports
 EXPOSE 80 22
